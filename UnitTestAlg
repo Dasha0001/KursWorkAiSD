@@ -1,0 +1,66 @@
+#include "pch.h"
+#include "CppUnitTest.h"
+#include "../KursWorkAiSD/find.h"
+
+using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+
+namespace UnitTestAlg
+{
+	TEST_CLASS(UnitTestAlg)
+	{
+	public:
+		
+		TEST_METHOD(TheEdmondsKarpAlgorithmTest1)
+		{
+
+			Node_List<ElementString> list;
+			list.PushBack(ElementString("S", "O", 3));
+			list.PushBack(ElementString("S", "P", 3));
+			list.PushBack(ElementString("O", "Q", 3));
+			list.PushBack(ElementString("O", "P", 2));
+			list.PushBack(ElementString("P", "R", 2));
+			list.PushBack(ElementString("Q", "R", 4));
+			list.PushBack(ElementString("Q", "T", 2));
+			list.PushBack(ElementString("R", "T", 3));
+
+			double maxpath = TheEdmondsKarpAlgorithm(list, "S", "T");
+
+			Assert::AreEqual(maxpath, 5.0);
+		}
+
+		TEST_METHOD(TheEdmondsKarpAlgorithmTest2)
+		{
+
+			Node_List<ElementString> list;
+			list.PushBack(ElementString("S", "O", 15));
+			list.PushBack(ElementString("S", "P", 30));
+			list.PushBack(ElementString("O", "Q", 33));
+			list.PushBack(ElementString("O", "P", 24));
+			list.PushBack(ElementString("P", "R", 23));
+			list.PushBack(ElementString("Q", "R", 44));
+			list.PushBack(ElementString("Q", "T", 25));
+			list.PushBack(ElementString("R", "T", 55));
+
+			double maxpath = TheEdmondsKarpAlgorithm(list, "S", "T");
+
+			Assert::AreEqual(maxpath, 38.0);
+		}
+		TEST_METHOD(TheEdmondsKarpAlgorithmTest3)
+		{
+
+			Node_List<ElementString> list;
+			list.PushBack(ElementString("S", "O", 100));
+			list.PushBack(ElementString("S", "P", 100));
+			list.PushBack(ElementString("O", "Q", 100));
+			list.PushBack(ElementString("O", "P", 100));
+			list.PushBack(ElementString("P", "R", 100));
+			list.PushBack(ElementString("Q", "R", 100));
+			list.PushBack(ElementString("Q", "T", 100));
+			list.PushBack(ElementString("R", "T", 100));
+
+			double maxpath = TheEdmondsKarpAlgorithm(list, "S", "T");
+
+			Assert::AreEqual(maxpath, 200.0);
+		}
+	};
+}
